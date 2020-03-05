@@ -4,6 +4,9 @@
 void PrintUsageMessage(void);
 void PrintMultiTable(int tableLimite);
 
+const int lowerLimit = 1;
+const int upperLimit =10;
+
 int main( int argc, char* argv[] )
 {
 	int inputValue = 0;
@@ -14,7 +17,7 @@ int main( int argc, char* argv[] )
 	else
 	{
 		inputValue = atoi(argv[1]);
-		if( inputValue >= 1 && inputValue <= 10)
+		if( inputValue >= lowerLimit && inputValue <= upperLimit)
 		{
 			//input is valid
 			PrintMultiTable( inputValue );
