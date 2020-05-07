@@ -1,6 +1,7 @@
 #include "main.h"
 #include "hal_LCD.h"
 #include <msp430.h>
+#include "Battery.h"
 #include "driverlib.h"
 
 // Cases
@@ -26,8 +27,8 @@ Timer_A_initUpModeParam initUpParam_A0 =
         true                                    // Start Timer
 };
 
-void Init_GPI0();
-void batteryStatusChange(char batteryStatus);
+void Init_GPIO();
+//void batteryStatusChange(char batteryStatus);
 //================================================================================
 /*
  * main.c
@@ -53,7 +54,7 @@ int main(void){
         switch(switchCase)
         {
         case InitialMode:
-            Init_GPI0();
+            Init_GPIO();
             Init_LCD();
 
             switchCase = ScrollText;
@@ -119,6 +120,22 @@ int main(void){
                 }
                 else
                 {
+                    P1OUT |= BIT0;
+                    P4OUT |= BIT0;
+
+                    for(count=0;count<30000;count++)
+                    {
+                        ;
+                    }
+
+                    P1OUT &= ~BIT0;
+                    P4OUT &= ~BIT0;
+
+                    for(count=0;count<30000;count++)
+                     {
+                         ;
+                     }
+
 
                 }
             }
@@ -126,6 +143,11 @@ int main(void){
             {
                 S1buttom = 0;
                 P1OUT &= ~BIT0;
+            }
+            if (P2IN & BIT6)
+            {
+                S2buttom = 0;
+                P4OUT &=BIT0;
             }
             if (!(P1IN & BIT2) && !(P2IN & BIT6))
             {

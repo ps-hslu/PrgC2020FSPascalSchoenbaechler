@@ -25,7 +25,7 @@ void batteryStatusChange(char batteryStatus)
 
     case two:
         LCDM12 = 0x30;
-        LCDM13 = 0x01;
+        LCDM13 = 0x03;
 
         break;
 
