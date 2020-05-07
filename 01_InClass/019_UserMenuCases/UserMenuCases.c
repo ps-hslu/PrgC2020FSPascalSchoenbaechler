@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//!!!
+
 typedef enum{
 	INVALID = 0,
 	PRINTCODERNAME = 1,
@@ -53,7 +55,7 @@ MenuSelection printUserMenu(void){
 	printf("2: CCalculate 1+1:\n");
 	printf("3: Exit\n");
 	printf("-> ");
-	scanf("%d\n", &selectedMenuItem );
+	scanf("%d", &selectedMenuItem );
 	
 
 	if(    selectedMenuItem != PRINTCODERNAME
